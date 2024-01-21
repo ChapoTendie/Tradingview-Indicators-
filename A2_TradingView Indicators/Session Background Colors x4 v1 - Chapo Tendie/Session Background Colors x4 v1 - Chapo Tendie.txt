@@ -1,0 +1,62 @@
+// Copyright (c) 2024 Warren Sanders. All rights reserved.
+// Terms of Use:
+// This script is provided as-is with no warranties. You are free to use, modify, and distribute this script for non-commercial purposes.
+// Any commercial use or redistribution requires explicit permission from the author.
+
+
+ //       c  c     \\  //              ))         .-.          (o)__(o)           \\\  ///       _     wW  Ww          
+ //       (OO)     (o)(o)      /)     (o0)-.    c(O_O)c        (__  __)    wWw    ((O)(O))     _||\    (O)(O)    wWw   
+ //     ,'.--.)    ||  ||    (o)(O)    | (_))  ,'.---.`,         (  )      (O)_    | \ ||     (_'\      (..)     (O)_  
+ //    / //_|_\    |(__)|     //\\     | .-'  / /|_|_|\ \         )(      .' __)   ||\\||     .'  |      ||     .' __) 
+ //     | \___      /.--.\    |(__)|    |(     | \_____/ |        (  )    (  _)     || \ |    ((_) |     _||_   (  _)   
+ //    '.    )    -'    `-   /,-. |     \)    '. `---' .`         )/      `.__)    ||  ||     `-`.)    (_/\_)   `.__)  
+ //      `-.'               -'   ''     (       `-...-'          (                (_/  \_)       (                     
+
+
+
+
+                                                                                                                          
+//     .-.                              .--.          .                             .    .--.    .                        .  . 
+//    (   )               o             |   )         |                             |   :        |                        |  | 
+//     `-.  .-. .--..--.  .  .-. .--.   |--:  .-.  .-.|.-. .-...--..-. .  . .--. .-.|   |    .-. | .-. .--..--.    -. ,-  '--|-
+//    (   )(.-' `--.`--.  | (   )|  |   |   )(   )(   |-.'(   ||  (   )|  | |  |(   |   :   (   )|(   )|   `--.      :       | 
+//     `-'  `--'`--'`--'-' `-`-' '  `-  '--'  `-'`-`-''  `-`-`|'   `-' `--`-'  `-`-'`-   `--'`-' `-`-' '   `--'    -' `-     ' 
+//                                                         ._.'                                                                
+                                                                                                                                                                                                                                                   
+
+//@version=5
+indicator("Session Background Colors x4 v1 - Chapo Tendie", shorttitle="Sessions by ChapoT", overlay=true)
+
+// User input for four time sessions
+session1 = input("0400-0930", title="Session 1")
+session2 = input("0930-1600", title="Session 2")
+session3 = input("1600-1800", title="Session 3")
+session4 = input("1800-0400", title="Session 4")
+
+res = input.timeframe("D", "Resolution", ["D","W","M"])
+
+is_newbar(sess) =>
+    t = time(res, sess, "America/New_York")
+    na(t[1]) and not na(t) or t[1] < t
+
+is_session(sess) =>
+    not na(time(timeframe.period, sess, "America/New_York"))
+    
+
+
+
+// Define colors for each session
+
+
+
+// Define colors for each session
+color1 = input(color.new(color.yellow, 95), title="Session 1", inline="color")
+color2 = input(color.new(color.green, 95), title="Session 2", inline="color")
+color3 = input(color.new(color.red, 95), title="Session 3", inline="color")
+color4 = input(color.new(color.blue, 95), title="Session 4", inline="color")
+
+// Set background color based on the current session
+bgcolor(is_session(session1) ? color1 : na, title="Color 1", offset=0)
+bgcolor(is_session(session2) ? color2 : na, title="Color 2", offset=0)
+bgcolor(is_session(session3) ? color3 : na, title="Color 3", offset=0)
+bgcolor(is_session(session4) ? color4 : na, title="Color 4", offset=0)
