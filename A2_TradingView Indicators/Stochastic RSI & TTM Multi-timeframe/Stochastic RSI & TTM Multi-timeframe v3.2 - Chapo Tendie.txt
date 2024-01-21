@@ -2,6 +2,13 @@
 // Terms of Use:
 // This script is provided as-is with no warranties. You are free to use, modify, and distribute this script for non-commercial purposes.
 // Any commercial use or redistribution requires explicit permission from the author.
+//The intention of this indicator is for it to be used on a multichart window as a standalone indicator on the 1 min timeframe, and used to signal profitable opportunties 
+//IMPORTANT NOTE:
+//-> The timeframe for this indicator must be set at 1 minute;
+//-> If the chart timeframe is higher than 1 minute, the results shown in the table for timeframes lower than the chart will not be correct;
+//-> Tradingview's own documentation explains this as follows: "It is not recommended to request data of a timeframe lower that the current chart timeframe, for example 1 minute data from a 5 minutes chart. The main problem with such a case is that some part of a 1 minute data will be inevitably lost, as it’s impossible to display it on a 5 minutes chart and not to break the time axis. In such cases the behavior of security can be rather unexpected"; and
+//-> It is therefore recommended that this indicator is placed in a standalone 1min chart window, and the window resized to only show the table to avoid any issues.
+
 
  //       c  c     \\  //              ))         .-.          (o)__(o)           \\\  ///       _     wW  Ww          
  //       (OO)     (o)(o)      /)     (o0)-.    c(O_O)c        (__  __)    wWw    ((O)(O))     _||\    (O)(O)    wWw   
